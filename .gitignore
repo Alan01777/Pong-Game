@@ -1,0 +1,44 @@
+# Godot generated files
+.godot/
+*.pck
+*.exe
+*.zip
+*.rar
+*.7z
+*.apk
+*.x86
+*.x86_64
+*.bin
+export_presets.cfg.remap
+
+# C# / .NET / Visual Studio
+.vs/
+bin/
+obj/
+*.csproj.user
+*.sln.GhostFile
+*.suo
+*.user
+*.pidb
+*.log
+*.rpt
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+
+# MacOS
+.DS_Store
+
+# Linux
+*.o
+*.so
+
+# Windows
+Thumbs.db
+
+# Misc
+*.tscn.converted
+*.gdns
+*.tres.converted
+*.gdnlib
+.idea/*

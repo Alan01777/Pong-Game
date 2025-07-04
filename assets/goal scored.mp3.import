@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cev0ixgtxeldn"
+path="res://.godot/imported/goal scored.mp3-eceab466f26d7c275c94d56a1a20edc8.mp3str"
+
+[deps]
+
+source_file="res://assets/goal scored.mp3"
+dest_files=["res://.godot/imported/goal scored.mp3-eceab466f26d7c275c94d56a1a20edc8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
