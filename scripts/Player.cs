@@ -27,7 +27,6 @@ public partial class Player : Area2D, IHasScore, ISmashable
     [Export]
     public float SmashBallSpeedMultiplier { get; private set; } = 1.2f; // Multiplicador de velocidade para a bola
 
-    // Crie este novo método para encapsular a lógica de ativação do smash
     public void ActivateSmash() // Implementação da interface ISmashable
     {
         IsSmashing = true;
@@ -64,7 +63,7 @@ public partial class Player : Area2D, IHasScore, ISmashable
         currentPosition.Y = Mathf.Clamp(currentPosition.Y, minLimit, maxLimit);
 
         // --- Lógica de ativação do Smash ---
-        if (Input.IsActionJustPressed("player_smash") && !IsSmashing) // Use IsSmashing
+        if (Input.IsActionJustPressed("player_smash") && !IsSmashing)
             ActivateSmash();
 
         // A posição Y é sempre atualizada, enquanto a posição X depende do estado de "smash".
@@ -73,7 +72,7 @@ public partial class Player : Area2D, IHasScore, ISmashable
 
     private void OnSmashFinished()
     {
-        IsSmashing = false; // Use IsSmashing
+        IsSmashing = false;
         if (_playerSprite != null) _playerSprite.Modulate = _defaultColor;
     }
 

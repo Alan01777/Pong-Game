@@ -24,14 +24,12 @@ public partial class Enemy : Area2D, IHasScore, ISmashable // Implementa ISmasha
     // Propriedades da animação do smash
     [Export] private float _smashDashDistance = 50f;
     [Export] private float _smashDuration = 0.15f;
-    private AudioStreamPlayer SmashSound { get; set; } // Propriedade de áudio, obtida em _Ready
+    private AudioStreamPlayer SmashSound { get; set; }
 
-    // Propriedades de Score (já existentes)
     public int Score { get; set; }
     [Export] public Label ScoreDisplay { get; set; }
     public AudioStreamPlayer ScoreSound { get; private set; }
 
-    // Implementação da interface ISmashable (agora é pública para a interface)
     public bool IsSmashing { get; private set; }
 
     public float SmashBallSpeedMultiplier { get; private set; } = 1.2f; // Multiplicador de velocidade para a bola
@@ -41,9 +39,9 @@ public partial class Enemy : Area2D, IHasScore, ISmashable // Implementa ISmasha
     {
         if (IsSmashing) return; // Evita ativar múltiplas vezes se já estiver smashando
 
-        IsSmashing = true; // Define o estado de smash
-        _smashCooldownTimer.Start(); // Inicia o cooldown
-        SmashSound?.Play(); // Toca o som
+        IsSmashing = true;
+        _smashCooldownTimer.Start(); 
+        SmashSound?.Play();
 
         if (_enemySprite != null) _enemySprite.Modulate = _smashColor; // Altera a cor
 
@@ -63,7 +61,7 @@ public partial class Enemy : Area2D, IHasScore, ISmashable // Implementa ISmasha
     public override void _Ready()
     {
         ScoreSound = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
-        SmashSound = GetNode<AudioStreamPlayer>("Smash"); // Certifique-se de que o nó de som se chame "Smash"
+        SmashSound = GetNode<AudioStreamPlayer>("Smash");
         _collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
         _halfEnemyHeight = _collisionShape.Shape.GetRect().Size.Y / 2;
 
@@ -76,7 +74,6 @@ public partial class Enemy : Area2D, IHasScore, ISmashable // Implementa ISmasha
             OneShot = true // Roda uma vez e para
         };
         AddChild(_smashCooldownTimer);
-        // Conecte o sinal aqui, se ainda não estiver conectado no editor
         _smashCooldownTimer.Connect("timeout", new Callable(this, nameof(OnSmashCooldownTimeout)));
 
         // Certifica que o cooldown começa parado
